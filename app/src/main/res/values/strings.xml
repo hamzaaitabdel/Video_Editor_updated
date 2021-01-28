@@ -22,7 +22,7 @@
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <!--  todo add default privacy link  -->
     <string name="link_policy">https://sites.google.com/view/aiteam/privacy-policy</string>
-    <string name="gdpr_policy">https://sites.google.com/view/aiteam/privacy-policy</string>
+    <string name="gdpr_privacy">https://sites.google.com/view/aiteam/privacy-policy</string>
     <string name="pub_id">pub-7835942441451843</string>
     <string name="default_rating_url">https://play.google.com/store/apps/details?id=</string>
     <string name="default_rating_url2">https://play.google.com/store/apps/details?id=</string>

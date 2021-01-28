@@ -37,7 +37,6 @@ public class DraftActivity extends AppCompatActivity {
     private List<Draft> drafts;
     private FrameLayout emptyView;
     private DraftViewModel viewModel;
-    private AdView adView;
     private void initAds() {
         //ads
         FrameLayout adContainer = findViewById(R.id.adView);

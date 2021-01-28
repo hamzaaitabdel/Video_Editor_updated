@@ -9,7 +9,18 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.applovin.sdk.AppLovinPrivacySettings;
 import com.example.videoeditor.R;
+import com.facebook.ads.Ad;
+import com.facebook.ads.AdError;
+import com.facebook.ads.NativeAdBase;
+import com.facebook.ads.NativeAdListener;
+import com.facebook.ads.NativeAdView;
+import com.google.ads.consent.ConsentForm;
+import com.google.ads.consent.ConsentFormListener;
+import com.google.ads.consent.ConsentInfoUpdateListener;
+import com.google.ads.consent.ConsentInformation;
+import com.google.ads.consent.ConsentStatus;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -21,8 +32,17 @@ import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
+import com.unity3d.ads.metadata.MetaData;
+import com.vungle.mediation.VungleConsent;
+import com.vungle.warren.Vungle;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class AdUtils {
+
 
     public static AdSize getAdSize(Context context) {
 
@@ -69,7 +89,7 @@ public class AdUtils {
                     .build();
             adLoader.loadAd(new AdRequest.Builder().build());
         } else {
-
+            loadNativeAd(context, frameLayout);
         }
     }
 
@@ -135,8 +155,9 @@ public class AdUtils {
     public static class Inters {
         InterstitialAd admob;
         com.facebook.ads.InterstitialAd fb;
-
+        Context context;
         public Inters(Context context, boolean reload) {
+            this.context = context;
             if (Provider.selected != -1) {
                 admob = new InterstitialAd(context);
                 admob.setAdUnitId(Provider.intersId);
@@ -151,7 +172,10 @@ public class AdUtils {
                 }
                 admob.loadAd(new AdRequest.Builder().build());
             } else {
-
+                fb = new com.facebook.ads.InterstitialAd(context,Provider.intersFb);
+                fb.loadAd(
+                        fb.buildLoadAdConfig()
+                                .build());
             }
         }
 
@@ -163,16 +187,108 @@ public class AdUtils {
             } else {
                 if (fb != null && fb.isAdLoaded()) {
                     fb.show();
+                    fb = new com.facebook.ads.InterstitialAd(context,Provider.intersFb);
+                    fb.loadAd(fb.buildLoadAdConfig().build());
                 }
             }
 
         }
     }
-    private void loadNativeAd(Context c) {
+    public static void loadNativeAd(Context c,FrameLayout frameLayout) {
         com.facebook.ads.NativeAd nativeAd = new com.facebook.ads.NativeAd(c, "YOUR_PLACEMENT_ID");
 
+        NativeAdListener nativeAdListener = new NativeAdListener() {
+            @Override
+            public void onMediaDownloaded(Ad ad) {
 
+            }
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Render the Native Ad Template
+                View adView = NativeAdView.render(c, nativeAd);
+                frameLayout.removeAllViews();
+                frameLayout.addView(adView);
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+
+            }
+        };
         nativeAd.loadAd(nativeAd.buildLoadAdConfig()
-                        .build());
+                .withAdListener(nativeAdListener)
+                .withMediaCacheFlag(NativeAdBase.MediaCacheFlag.ALL)
+                .build());
+    }
+    public static class Gdpr{
+        private ConsentForm form;
+        public Gdpr(Context context){
+            //applovin
+            AppLovinPrivacySettings.setHasUserConsent(true, context.getApplicationContext());
+            //Facebook
+            //Unity
+            MetaData gdprMetaData = new MetaData(context);
+            gdprMetaData.set("gdpr.consent", true);
+            gdprMetaData.commit();
+            //Vungle
+            VungleConsent.updateConsentStatus(Vungle.Consent.OPTED_IN, "1.0.0");
+            //admob
+            ConsentInformation consentInformation = ConsentInformation.getInstance(context);
+            String[] publisherIds = {context.getSharedPreferences("privacy",MODE_PRIVATE).getString("pub_id",context.getString(R.string.pub_id))};
+            consentInformation.requestConsentInfoUpdate(publisherIds, new ConsentInfoUpdateListener() {
+                @Override
+                public void onConsentInfoUpdated(ConsentStatus consentStatus) {
+                    // User's consent status successfully updated.
+                }
+
+                @Override
+                public void onFailedToUpdateConsentInfo(String errorDescription) {
+                    // User's consent status failed to update.
+                }
+            });
+            URL privacyUrl = null;
+            try {
+                privacyUrl = new URL(context.getSharedPreferences("privacy",MODE_PRIVATE).getString("gdpr_privacy",context.getString(R.string.gdpr_privacy)));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                // Handle error.
+            }
+            form = new ConsentForm.Builder(context, privacyUrl)
+                    .withListener(new ConsentFormListener() {
+                        @Override
+                        public void onConsentFormLoaded() {
+                            // Consent form loaded successfully.
+                            form.show();
+                        }
+
+                        @Override
+                        public void onConsentFormOpened() {
+                        }
+
+                        @Override
+                        public void onConsentFormClosed(ConsentStatus consentStatus, Boolean userPrefersAdFree) {
+                        }
+
+                        @Override
+                        public void onConsentFormError(String errorDescription) {
+                        }
+                    })
+                    .withPersonalizedAdsOption()
+                    .withNonPersonalizedAdsOption()
+                    .withAdFreeOption()
+                    .build();
+            form.load();
+        }
     }
 }

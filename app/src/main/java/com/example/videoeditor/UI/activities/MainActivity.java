@@ -61,8 +61,6 @@ import static com.example.videoeditor.Utils.AdUtils.loadNative;
 public class MainActivity extends AppCompatActivity {
     private ImageButton create, editVid, editPhoto, studio;
     private AdUtils.Inters mInterstitialAd;
-    private AdView adView;
-    private ConsentForm form;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         requestPermission(this);
         setViewsClickListener();
-//        Gdpr();
+        new AdUtils.Gdpr(this);
         initAds();
     }
 
@@ -184,66 +182,5 @@ public class MainActivity extends AppCompatActivity {
         adView.setNativeAd(nativeAd);
     }
 
-    private void Gdpr(){
-        //applovin
-        AppLovinPrivacySettings.setHasUserConsent(true, getApplicationContext());
-        //Facebook
-        //Unity
-        MetaData gdprMetaData = new MetaData(this);
-        gdprMetaData.set("gdpr.consent", true);
-        gdprMetaData.commit();
-        //Vungle
-        VungleConsent.updateConsentStatus(Vungle.Consent.OPTED_IN, "1.0.0");
-        //admob
-        ConsentInformation consentInformation = ConsentInformation.getInstance(this);
-        String[] publisherIds = {getSharedPreferences("privacy",MODE_PRIVATE).getString("pub_id",getString(R.string.pub_id))};
-        consentInformation.requestConsentInfoUpdate(publisherIds, new ConsentInfoUpdateListener() {
-            @Override
-            public void onConsentInfoUpdated(ConsentStatus consentStatus) {
-                // User's consent status successfully updated.
-            }
-
-            @Override
-            public void onFailedToUpdateConsentInfo(String errorDescription) {
-                // User's consent status failed to update.
-            }
-        });
-        URL privacyUrl = null;
-        try {
-            privacyUrl = new URL(getSharedPreferences("privacy",MODE_PRIVATE).getString("gdpr_privacy",getString(R.string.gdpr_policy)));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            // Handle error.
-        }
-        form = new ConsentForm.Builder(this, privacyUrl)
-                .withListener(new ConsentFormListener() {
-                    @Override
-                    public void onConsentFormLoaded() {
-                        // Consent form loaded successfully.
-                        form.show();
-                    }
-
-                    @Override
-                    public void onConsentFormOpened() {
-                        // Consent form was displayed.
-                    }
-
-                    @Override
-                    public void onConsentFormClosed(
-                            ConsentStatus consentStatus, Boolean userPrefersAdFree) {
-                        // Consent form was closed.
-                    }
-
-                    @Override
-                    public void onConsentFormError(String errorDescription) {
-                        // Consent form error.
-                    }
-                })
-                .withPersonalizedAdsOption()
-                .withNonPersonalizedAdsOption()
-                .withAdFreeOption()
-                .build();
-        form.load();
-    }
 
 }
