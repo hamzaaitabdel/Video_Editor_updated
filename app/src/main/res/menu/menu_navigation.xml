@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/brush"
+        android:title="Brush"
+        android:icon="@drawable/done"/>
+    <item android:id="@+id/text"
+        android:title="Text"
+        android:icon="@drawable/done"/>
+    <item android:id="@+id/eraser"
+        android:title="Eraser"
+        android:icon="@drawable/done"/>
+    <item android:id="@+id/sticker"
+        android:title="Sticker"
+        android:icon="@drawable/done"/>
+    <item android:id="@+id/emoji"
+        android:title="Emoji"
+        android:icon="@drawable/done"/>
+</menu>

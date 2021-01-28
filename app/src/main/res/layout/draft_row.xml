@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="7dp"
+    app:cardCornerRadius="7dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:id="@+id/draft_pic"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/bg"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/gradient_item_bg"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="12:12:12 12/12/12"
+                android:id="@+id/draft_date"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="7dp"
+                android:layout_weight="1"
+                android:textColor="#FFFF"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/draft_delete"
+                android:layout_marginBottom="9dp"
+                android:layout_marginRight="9dp"
+                android:foreground="@drawable/ripple_effect"
+                android:background="@drawable/delete"/>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>

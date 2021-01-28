@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:minWidth="500dp"
+    android:backgroundTint="@color/colorPrimary"
+    android:background="@drawable/button_shape"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:paddingVertical="16dp"
+            android:gravity="center_horizontal"
+            android:text="Do you want to save?"
+            android:textColor="@color/white"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:id="@+id/image_preview"
+            android:layout_marginBottom="12dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7A4EF3"
+            android:id="@+id/save_with_frame"
+            android:textSize="18sp"
+            android:paddingVertical="14dp"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/white"
+            android:foreground="@drawable/video_player_ripple"
+            android:layout_marginBottom="12dp"
+            android:textAllCaps="false"
+            android:text="Save with frame"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/save_now"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="#938F8F"
+            android:textColor="@color/white"
+            android:foreground="@drawable/video_player_ripple"
+            android:paddingVertical="14dp"
+            android:text="Save now"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go back"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:id="@+id/cancel_dialog_bt"
+            android:paddingVertical="12dp"
+            android:layout_marginVertical="7dp"
+            android:textColor="@color/white"
+            android:foreground="@drawable/ripple_effect"/>
+    </LinearLayout>
+</RelativeLayout>

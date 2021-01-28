@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">VideoEditor</string>
+    <string name="label_brush">Brush</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_sticker">Sticker</string>
+    <string name="label_eraser">Eraser</string>
+    <string name="label_eraser_mode">Eraser Mode</string>
+    <string name="label_text">Text</string>
+    <string name="label_filter">Filter</string>
+    <string name="label_adjust">Adjust</string>
+    <string name="msg_save_image">Are you want to exit without saving image ?</string>
+    <string name="app_intent_name">PhotoEditor</string>
+    <string name="msg_save_image_to_share">Please save image to share</string>
+    <string name="msg_share_image">Share Image</string>
+    <string name="likes_followers">Get More Likes vs Followers</string>
+
+    <string name="inters">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="exit_inters">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="native_ad_id">ca-app-pub-3940256099942544/2247696110</string>
+
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!--  todo add default privacy link  -->
+    <string name="link_policy">https://sites.google.com/view/aiteam/privacy-policy</string>
+    <string name="gdpr_policy">https://sites.google.com/view/aiteam/privacy-policy</string>
+    <string name="pub_id">pub-7835942441451843</string>
+    <string name="default_rating_url">https://play.google.com/store/apps/details?id=</string>
+    <string name="default_rating_url2">https://play.google.com/store/apps/details?id=</string>
+    <string name="default_donate_url">https://paypal.com</string>
+    <string name="how_much_do_you_love_our_app">how much do you love our app ?</string>
+    <string name="default_privacy_url" />
+
+</resources>

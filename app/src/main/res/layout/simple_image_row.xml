@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_gravity="center_vertical"
+    android:layout_margin="3dp"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+        android:layout_width="@dimen/simple_img_view_size"
+        android:layout_height="@dimen/simple_img_view_size"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/none"
+        android:background="@color/colorPrimary"
+        android:id="@+id/simple_img"
+        />
+</FrameLayout>

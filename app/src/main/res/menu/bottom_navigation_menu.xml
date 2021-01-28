@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_follourl" android:id="@+id/ic_Follourl" android:title="Followers"/>
+    <item android:icon="@drawable/ic_favorites" android:id="@+id/ic_Likes" android:title="Likes"/>
+</menu>
