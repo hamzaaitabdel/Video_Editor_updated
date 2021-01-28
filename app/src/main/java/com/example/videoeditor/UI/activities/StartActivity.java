@@ -201,7 +201,7 @@ public class StartActivity extends AppCompatActivity {
         });
         URL privacyUrl = null;
         try {
-            privacyUrl = new URL(getSharedPreferences("privacy",MODE_PRIVATE).getString("gdpr_privacy",getString(R.string.gdpr_policy)));
+            privacyUrl = new URL(getSharedPreferences("privacy",MODE_PRIVATE).getString("gdpr_privacy",getString(R.string.gdpr_privacy)));
         } catch (MalformedURLException e) {
             e.printStackTrace();
             // Handle error.
