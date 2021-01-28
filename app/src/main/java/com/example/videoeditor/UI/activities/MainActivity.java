@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         mInterstitialAd = new AdUtils.Inters(this,false);
 
         //native
-       FrameLayout frameLayout=findViewById(R.id.native_container);
+       FrameLayout frameLayout=findViewById(R.id.adView);
        loadNative(this,frameLayout);
     }
     public static AdSize getAdSize(Context context) {

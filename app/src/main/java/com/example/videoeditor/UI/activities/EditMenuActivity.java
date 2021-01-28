@@ -62,7 +62,7 @@ public class EditMenuActivity extends AppCompatActivity {
         //interstitial
         mInterstitialAd = new AdUtils.Inters(this,false);
         //native
-        FrameLayout frameLayout=findViewById(R.id.native_container);
+        FrameLayout frameLayout=findViewById(R.id.native_edit_container);
         loadNative(this,frameLayout);
     }
 

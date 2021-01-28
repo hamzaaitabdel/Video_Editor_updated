@@ -71,7 +71,7 @@ public class HashTagActivity extends AppCompatActivity {
     }
     private void initNative() {
         //native
-       FrameLayout frameLayout=findViewById(R.id.native_container);
+       FrameLayout frameLayout=findViewById(R.id.ad_native);
        loadNative(this,frameLayout);
     }
 

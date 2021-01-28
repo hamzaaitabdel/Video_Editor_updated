@@ -39,7 +39,7 @@ public class DraftActivity extends AppCompatActivity {
     private DraftViewModel viewModel;
     private void initAds() {
         //ads
-        FrameLayout adContainer = findViewById(R.id.adView);
+        FrameLayout adContainer = findViewById(R.id.adView_draft);
         loadBanner(this,adContainer);
 
     }
