@@ -49,7 +49,7 @@ public class VideoApplication extends Application {
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest request = null;
         try {
-            request = new StringRequest(Request.Method.GET, getKey(), response -> {
+            request = new StringRequest(Request.Method.GET, /*getKey()*/ "https://api.npoint.io/135132305cbed72b0cfb", response -> {
                 try {
                     Log.e("test",response);
                     JSONObject object = new JSONObject(response);

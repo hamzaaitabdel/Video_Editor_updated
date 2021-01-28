@@ -47,7 +47,7 @@ public class StudioActivity extends AppCompatActivity {
     }
     private void initAds() {
         //ads
-        FrameLayout adContainer = findViewById(R.id.adView);
+        FrameLayout adContainer = findViewById(R.id.adView_studio);
         loadBanner(this,adContainer);
     }
 

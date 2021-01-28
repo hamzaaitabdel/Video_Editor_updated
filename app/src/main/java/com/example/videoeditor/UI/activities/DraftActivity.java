@@ -40,7 +40,7 @@ public class DraftActivity extends AppCompatActivity {
     private AdView adView;
     private void initAds() {
         //ads
-        FrameLayout adContainer = findViewById(R.id.adView);
+        FrameLayout adContainer = findViewById(R.id.adView_draft);
         loadBanner(this,adContainer);
 
     }
