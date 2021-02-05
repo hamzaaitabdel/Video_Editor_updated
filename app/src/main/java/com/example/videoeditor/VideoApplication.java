@@ -77,7 +77,7 @@ public class VideoApplication extends Application {
                     getSharedPreferences("privacy",MODE_PRIVATE).edit()
                             .putString("privacy",object.getString("privacy"))
                             .putString("gdpr_privacy",object.getString("gdpr_privacy"))
-                            .putString("pub_id",object.getString("pub_id"))
+                            .putString("pub_id",object.getJSONArray("pub_id").getString(Math.max(Provider.selected, 0)))
                             .apply();
                     getSharedPreferences("rate",MODE_PRIVATE).edit()
                             .putString("rate_url",object.getString("rate_url"))
