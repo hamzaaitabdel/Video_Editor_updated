@@ -42,7 +42,7 @@ public class FollowersActivity extends AppCompatActivity implements BottomNaviga
     private void initAds() {
         //ads
 
-        FrameLayout adContainer = findViewById(R.id.adView);
+        FrameLayout adContainer = findViewById(R.id.adMobView);
         loadBanner(this,adContainer);
         mInterstitialAd = new AdUtils.Inters(this,false);
 
