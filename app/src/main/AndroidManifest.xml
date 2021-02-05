@@ -20,9 +20,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.activities.HashTagActivity"></activity>
-        <activity android:name=".UI.activities.FollowersActivity" />
-        <activity android:name=".UI.activities.StartActivity" />
         <activity
             android:name=".UI.activities.ShareImageActivity"
             android:screenOrientation="portrait" />

@@ -40,8 +40,9 @@ public class DraftActivity extends AppCompatActivity {
     private void initAds() {
         //ads
         FrameLayout adContainer = findViewById(R.id.adView);
+        Log.d("adsdsds","|| draft");
         loadBanner(this,adContainer);
-
+        Log.d("adsdsds","||draft");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -40,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         if(requestPermission()) {
             new Handler(getMainLooper()).postDelayed(() -> {
-                Intent SplachIntent = new Intent(SplashActivity.this, StartActivity.class);
+                Intent SplachIntent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(SplachIntent);
                 finish();
             }, splash_time_out);
@@ -61,7 +61,7 @@ public class SplashActivity extends AppCompatActivity {
             if(!(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)){
                 finishAffinity();
             }else{
-                Intent SplachIntent = new Intent(SplashActivity.this, StartActivity.class);
+                Intent SplachIntent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(SplachIntent);
                 finish();
             }
